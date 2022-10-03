@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 require_once ("models/Model.php");
 
 class Post extends Model {

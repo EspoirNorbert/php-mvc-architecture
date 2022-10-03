@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Models;
+
+
 require_once("./config/Database.php");
 
 abstract class Model {

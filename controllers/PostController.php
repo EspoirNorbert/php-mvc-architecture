@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controllers;
+
 require_once('Controller.php');
 require_once("config/View.php");
 require_once("models/Post.php");

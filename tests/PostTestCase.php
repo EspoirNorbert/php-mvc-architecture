@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Tests;
+
+
 require_once("./models/Post.php");
 
 class PostTestCase {

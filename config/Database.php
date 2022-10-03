@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class Database extends \PDO{
 
     private const SERVER = "localhost";

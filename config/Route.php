@@ -1,6 +1,6 @@
 <?php
 
-
+namespace core;
 
 /**
  * @author      Bram(us) Van Damme <bramus@bram.us>
