@@ -3,18 +3,17 @@ A php app build with mvc architecture added repository pattern
 
 # Files structures
 There are three main folders
--  **app***  represent app . He contains controllers, interfaces, models , repositories
+-  **app**  represent app . He contains controllers, interfaces, models , repositories
 -   **core** represent core app with shared features
 -   **views** represent view files
 
 # Application Structures
 ````
 -   app
-    - controllers
-    - interfaces
-    - models
-    - repositories
-
+        controllers
+        interfaces
+        models
+        repositories
 -   core
         Database.php
         Helper.php
@@ -22,13 +21,13 @@ There are three main folders
         View.php
 
 -   public
-        - .htaccess
-        -  index.php
+        .htaccess
+        index.php
 
 -   views
-    -   errors
-    -   layouts
-    -   posts
+        errors
+        layouts
+        posts
 ````
 
 # Getting starting
