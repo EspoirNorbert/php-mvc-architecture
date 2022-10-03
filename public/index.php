@@ -1,65 +1,21 @@
 <?php
 
-require_once (dirname(__DIR__) . "/config/Route.php");
-require_once (dirname(__DIR__) . "/controllers/HomeController.php");
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+use App\Controllers\PostController;
+use Core\Route;
+
 
 $route = new Route();
-
-/*** Home Routes*/
-$route->get("/" , function(){
-    $homeController = new HomeController();
-    $homeController->index();
-});
-
-/*** Post routes */
+$route->get("/" ,'\App\Controllers\HomeController@index');
 $route->mount('/posts', function() use ($route) {
 
-    require_once ("controllers/PostController.php");
-
-    /**
-     * Display Post list page
-     */
-    $route->get('/', function() {
-        (new PostController())->index();
-    });
-
-
-    /**
-     * Display form for create a post
-     */
-    $route->get('/create', function() {
-        (new PostController())->create();
-    });
-
-    /**
-     * Store a post
-     */
-    $route->post('/', function() {
-        (new PostController())->store();
-    });
-
-    /**
-     * Update a post
-    */
-    $route->post('/(\d+)/update', function() {
-        (new PostController())->update();
-    });
-    
-    
-    
-    /**
-     * Get one post
-    */
-    $route->get('/(\d+)', function($id) {
-        (new PostController())->detail(intval($id));
-    });
-
-    /**
-     * Delete a post
-     */
-    $route->get('/(\d+)/delete', function($id) {
-        (new PostController())->delete(intval($id));
-    });
+    $route->get('/','\App\Controllers\PostController@index');
+    $route->get('/create', '\App\Controllers\PostController@create');
+    $route->post('/', '\App\Controllers\PostController@store');
+    $route->post('/(\d+)/update', '\App\Controllers\PostController@update');
+    $route->get('/(\d+)', function($id) {(new PostController())->detail(intval($id));});
+    $route->get('/(\d+)/delete', function($id) {(new PostController())->delete(intval($id));});
 
 });
 

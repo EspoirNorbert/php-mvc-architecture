@@ -7,16 +7,13 @@ $title = "Articles";
     <h2 class="mt-5">Articles  (<?= $totalPost ?>) </h2>
     <hr>
     <?php 
-        if (count($posts) == 0) {
-
-        ?>
+        if (count($posts) == 0) {?>
         <div class="d-flex flex-column p-5 text-center mx-auto">
             <h3><small> Vous n'avez creer aucun article pour le moment</small></h3>
             <p>Tous vos articles  seront sauvegardées ici pour que vous puissiez les consulter tout moment. <br>
                 <a  href="/posts/create" class="btn btn-success">Creer un article</a>
             </p>
         <?php
-       
         }
         else {
     ?>

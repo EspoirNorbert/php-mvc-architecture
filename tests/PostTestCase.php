@@ -2,22 +2,22 @@
 
 namespace App\Tests;
 
-
-require_once("./models/Post.php");
+use App\Models\Post;
+use App\Repositories\PostRepository;
 
 class PostTestCase {
 
-    private $postModel;
+    private $postRepository;
 
     public function __construct() {
-        $this->postModel = new Post();
+        $this->postRepository = new PostRepository();
     }
 
-    public function createPost($title ,$content): void
+    public function createPost(Post $post): void
     { 
         try 
         {
-            $post = $this->postModel->save($title ,$content);
+            $post = $this->postRepository->save($post);
             if ($post) echo "Un post a été cree avec success";
             
         } catch (\Throwable $e) {
@@ -28,10 +28,10 @@ class PostTestCase {
 
     public function findAllPost(): void
     {
-       $posts = $this->postModel->findAll();
+       $posts = $this->postRepository->findAll();
        foreach($posts as $post){
            extract($post);
-           echo "#$id - $title - publié le $date <br>" ;
+           //echo "#$id - $title - publié le $date <br>" ;
        }
     }
 
@@ -39,7 +39,7 @@ class PostTestCase {
     {
         try {
             # code...
-            $post = $this->postModel->findById($id);
+            $post = $this->postRepository->findById($id);
             var_dump($post);
         } catch (\Throwable $e) {
             # code...
@@ -50,7 +50,7 @@ class PostTestCase {
     public function UpdatePost($title ,$content , $id) : void {
         try 
         {
-            $post = $this->postModel->save($title ,$content ,$id);
+            $post = $this->postRepository->save($title ,$content ,$id);
             if ($post) echo "Un post N°$id a été mise à jour avec success <br>";
             
         } catch (\Throwable $e) {
@@ -62,7 +62,7 @@ class PostTestCase {
     public function DeletePost(int $int) : void {
         try 
         {
-            $post = $this->postModel->delete(4);
+            $post = $this->postRepository->delete(4);
             if ($post) echo "Un post N°4 a été supprimé avec success <br>";
             
         } catch (\Throwable $e) {
@@ -74,7 +74,7 @@ class PostTestCase {
 }
 
 $postTestCase = new PostTestCase();
-//$postTestCase->createPost("Mon Cinquieme poste" , "Bonjour c'est mon 5éme poste");
+//$postTestCase->createPost(new Post(null , "Mon Cinquieme poste" , "Bonjour c'est mon 5éme poste"));
 //$postTestCase->findAllPost();
 //$postTestCase->UpdatePost("Mon Quatriéme post modifié" , "Modification" , 6);
 //$postTestCase->findAllPost();
@@ -82,4 +82,4 @@ $postTestCase = new PostTestCase();
 
 //echo "Les articles apres suppression <br>" ;
 //echo  "--------------------------------------<br>";
-$postTestCase->findById(9);
+// $postTestCase->findById(9);

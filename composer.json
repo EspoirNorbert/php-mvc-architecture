@@ -1,0 +1,17 @@
+{
+    "name": "administrateur/18_php_mvc_architecture",
+    "description": "PHP MVC Architecture example",
+    "authors": [
+        {
+            "name": "EspoirNorbert",
+            "email": "espoirnorbert@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core/",
+            "App\\": "app/"
+        }
+    }
+}
