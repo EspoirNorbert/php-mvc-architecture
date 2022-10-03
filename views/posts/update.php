@@ -1,11 +1,10 @@
 <?php
 ob_start();
-extract($post);
 $title = "$title";
 ?>
 <div class="container mt-5">
     <div>
-        <h2 class="mt-5 bg-success p-2 text-white"><?= $title ?></h2>
+        <h2 class="mt-5 bg-success p-2 text-white"><?= $post->getTitle() ?></h2>
         <?php
         if (isset($errors)) {
 
@@ -23,15 +22,15 @@ $title = "$title";
         <?php
         }
         ?> 
-        <form class="border p-3 mb-2" method="post" action="/posts/<?= $post_id ?>/update">
-            <input type="hidden" name="id" value="<?= $post_id ?>">
+        <form class="border p-3 mb-2" method="post" action="/posts/<?= $post->getId() ?>/update">
+            <input type="hidden" name="id" value="<?= $post->getId() ?>">
             <div class="form-group">
                 <label for="labelTitle">Title *</label>
-                <input type="text" class="form-control" name="title" value="<?= $title ?>" placeholder="Enter le titre de votre article" required>
+                <input type="text" class="form-control" name="title" value="<?= $post->getTitle() ?>" placeholder="Enter le titre de votre article" required>
             </div>
             <div class="form-group">
                 <label for="content">Content *</label>
-                <textarea class="form-control" name="content" rows="10" placeholder="Enter le contenue de votre article" required><?= $content ?></textarea>
+                <textarea class="form-control" name="content" rows="10" placeholder="Enter le contenue de votre article" required><?= $post->getContent() ?></textarea>
             </div>
             <button type="submit" class="btn btn-success btn-block">Update</button>
         </form>

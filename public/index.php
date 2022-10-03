@@ -1,16 +1,15 @@
 <?php
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 use App\Controllers\PostController;
 use Core\Route;
 
-
 $route = new Route();
-$route->get("/" ,'\App\Controllers\HomeController@index');
+$route->get("/" , '\App\Controllers\HomeController@index');
 $route->mount('/posts', function() use ($route) {
 
-    $route->get('/','\App\Controllers\PostController@index');
+    $route->get('/', '\App\Controllers\PostController@index');
     $route->get('/create', '\App\Controllers\PostController@create');
     $route->post('/', '\App\Controllers\PostController@store');
     $route->post('/(\d+)/update', '\App\Controllers\PostController@update');
@@ -19,4 +18,7 @@ $route->mount('/posts', function() use ($route) {
 
 });
 
+/**
+ * Run all routes
+ */
 $route->run();

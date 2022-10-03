@@ -22,18 +22,18 @@ $title = "Articles";
         <?php 
         
         foreach($posts as $post){
-            extract($post);
+            //extract($post);
         ?>
             <div class="card mb-2">
                 <div class="card-body">
-                <h5 class="card-title"><?= $title ?> </h5>
-                <h6 class="card-subtitle mb-2 text-muted">Post N°<?= $id ?></h6>
-                <p class="card-text"><?= $content ?></p>
-                <p class="card-text"><small class="text-muted">Published <?= $date ?> </small></p>
-                <a href="/posts/<?= $id ?>/delete" 
+                <h5 class="card-title"><?= $post->getTitle() ?> </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Post N°<?= $post->getId()  ?></h6>
+                <p class="card-text"><?= $post->getContent() ?></p>
+                <p class="card-text"><small class="text-muted">Published <?= $post->getDate()  ?> </small></p>
+                <a href="/posts/<?= $post->getId() ?>/delete" 
                 onclick="return confirm('Vous vous vraiment supprime cet post')" 
                 class="card-link btn btn-danger">Delete</a>
-                <a href="/posts/<?= $id ?>" class="card-link btn btn-info">Update</a>
+                <a href="/posts/<?= $post->getId()  ?>" class="card-link btn btn-info">Update</a>
             </div>
         </div>
         <?php
